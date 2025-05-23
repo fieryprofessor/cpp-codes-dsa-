@@ -1,9 +1,8 @@
-//find the transpose of a matrix.
+//Rotate the matrix to the right.
 #include<bits/stdc++.h>
 using namespace std;
 
 int main(){
-    
     int n,m;
     cin>>n>>m;
     vector<vector<int>> v(n,vector<int>(m));
@@ -20,14 +19,19 @@ int main(){
     }
 
     for(int i=0;i<n;i++){
+        reverse(v[i].begin(),v[i].end());
+    }
+
+    for(int i=0;i<n;i++){
         for(int j=0;j<m;j++){
             cout<<v[i][j]<<" ";
         }
         cout<<endl;
     }
+
     return 0;
 }
 
-//time: O(nm)
-//space: O(1)
-//Note this works only for square matrices.
+//time:O(n^2)
+//space:O(1)
+//Note : to rotate the matrix left , first take transpose and reverse all the columns .
