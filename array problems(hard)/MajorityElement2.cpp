@@ -36,3 +36,6 @@ int main(){
     majorityElements(v);
     return 0;
 }
+
+//time:O(2n)
+//space:O(1)
