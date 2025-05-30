@@ -46,3 +46,6 @@ using namespace std;
         cout<<k<<endl;
         return 0;
     }
+
+//time:O(nlog(maxElement))
+//space:O(1)
