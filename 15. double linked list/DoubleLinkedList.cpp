@@ -1,22 +1,41 @@
-//Deletion and Insertion In the List
+//Double Linked List Structure
 #include<bits/stdc++.h>
 using namespace std;
 
+//node of double linkedlist.
 class Node{
     public:
     int data;
     Node* next;
+    Node* prev;
 
     Node(int data){
         this->data = data;
         next = nullptr;
+        prev = nullptr;
     }
 };
+
+//converting array elements to double linkedlist
+Node* convertArrToDLL(vector<int>&v){
+    Node* head = new Node(v[0]);
+    Node* curr = head;
+    for(int i=1;i<v.size();i++){
+        Node* temp = new Node(v[i]);
+        temp->prev = curr;
+        curr->next = temp;
+        curr = curr->next;
+    }
+    return head;
+}
 
 //insert at the head
 void insertAthead(Node* &head, int val){
     Node* node = new Node(val);
     node->next = head;
+    if (head != nullptr) {
+        head->prev = node;
+    }
     head = node;
 }
 
@@ -28,6 +47,7 @@ void insertAtTail(Node* &head, int val){
         temp = temp->next;
     }
     temp->next = node;
+    node->prev = temp;
 }
 
 //insert at any Arbitrary position
@@ -37,7 +57,13 @@ void insertArbitrary(Node* head, int val , int pos){
     for(int i=1;i<pos-1;i++){
         temp = temp->next;
     }
+    if(temp==nullptr) 
+    return;
     node->next = temp->next;
+    node->prev = temp;
+    if(temp->next != nullptr){
+        temp->next->prev = node;
+    }
     temp->next=node;
 }
 
@@ -45,6 +71,7 @@ void insertArbitrary(Node* head, int val , int pos){
 void deleteAtHead(Node* &head){
     Node* temp = head;
     head=head->next;
+    head->prev=nullptr;
     delete temp;
 }
 
@@ -73,23 +100,24 @@ void deleteAtArbitrary(Node* &head, int pos){
         temp = temp->next;
     }
     Node* toDelete = temp->next;
-    temp->next = temp->next->next;
+    temp->next = toDelete->next;
+    if(toDelete->next!=nullptr){
+        toDelete->next->prev=temp;
+    }
     delete toDelete;
 }
 
-
-//display list
+//traversing each node and displaying it.
 void display(Node* head){
     Node* temp = head;
     while(temp!=nullptr){
-        cout<<temp->data<<"->";
+        cout<<temp->data<<"<->";
         temp = temp->next;
     }
     cout<<"null"<<endl;
 }
 
 int main(){
-
     Node* head = new Node(1);
     display(head);
     insertAthead(head,2);
