@@ -58,3 +58,6 @@ int main(){
     display(head);
     return 0;
 }
+
+//time:O(n)
+//space:O(1)
