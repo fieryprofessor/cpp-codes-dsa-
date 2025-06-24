@@ -23,6 +23,25 @@ int characterReplacement(string s, int k) {
         return result;
     }
 
+    //taking map instead of frequency array.
+    int characterReplacement2(string s, int k) {
+    unordered_map<char, int> freq;
+    int maxCount = 0, start = 0, result = 0;
+
+    for (int end = 0; end < s.size(); ++end) {
+        freq[s[end]]++;
+        maxCount = max(maxCount, freq[s[end]]);
+
+        while ((end - start + 1) - maxCount > k) {
+            freq[s[start]]--;
+            start++;
+        }
+
+        result = max(result, end - start + 1);
+    }
+    return result;
+}
+
 int main(){
     string s = "ABAB";
     int k = 2;
