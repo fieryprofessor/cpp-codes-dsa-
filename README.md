@@ -36,8 +36,7 @@ Feel free to reach out — let’s grow together! 🚀
 
 ## 🗒️ Notes:
 
-From Recursion Directory onwards I am using Github Copilot to speed up the code process
-and for a better code explanation.
+From Recursion Directory onwards I am using Github Copilot in some questions to speed up the code process and for a better code explanation.
 
 If You Really Like the Repository and value my efforts do star this repo.
 Thanks for visiting and Keep Growing🥸.
