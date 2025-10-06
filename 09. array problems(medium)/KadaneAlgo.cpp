@@ -16,6 +16,15 @@ int kadaneAlgo(vector<int>&v){
    return maxSum;
 }
 
+int kadane(vector<int>&v){
+    int sum=v[0],best=v[0];
+    for(int i=1;i<v.size();i++){
+        sum = max(v[i],sum+v[i]);
+        best = max(best,sum);
+    }
+    return best;
+}
+
 int main(){
     vector<int>v = {-2,-3,4,-1,-2,1,5,-3};
     int sum = kadaneAlgo(v);
