@@ -6,7 +6,6 @@ int longestCommonSubsequence(vector<int>&v){
     sort(v.begin(),v.end());
     int count = 1;
     int maxLength = 1;
-    int prevSmallest = INT_MIN;
     int current = v[0];
     for(int i=1;i<v.size();i++){
         if(v[i]==current){
@@ -15,7 +14,6 @@ int longestCommonSubsequence(vector<int>&v){
         else if(v[i]==current+1){
             count++;
             maxLength= max(maxLength,count);
-            prevSmallest = current;
             current = v[i];
         }
         else{
