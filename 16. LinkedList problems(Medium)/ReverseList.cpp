@@ -31,6 +31,20 @@ void display(Node* head){
     cout<<"null"<<endl;
 }
 
+Node* reverseList2(Node* head) {
+    Node* prev = nullptr;
+    Node* curr = head;
+
+    while (curr != nullptr) {
+        Node* nextNode = curr->next; // Save next node
+        curr->next = prev;           // Reverse the link
+        prev = curr;                 // Move prev
+        curr = nextNode;             // Move curr
+    }
+
+    return prev;
+}
+
 Node* reverseList(Node* &head){
     if(!head || !head->next)
     return head;

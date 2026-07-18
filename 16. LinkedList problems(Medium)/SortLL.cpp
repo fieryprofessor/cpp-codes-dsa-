@@ -46,31 +46,31 @@ Node* middleElement(Node* &head){
 }
 
 Node* mergeTwoLists(Node* list1, Node* list2) {
-        Node* head = new Node(-1);
-        Node* temp = head;
-        Node* temp1 = list1;
-        Node* temp2 = list2;
+        Node* dummy = new Node(-1);
+        Node* temp = dummy;
+        
 
-        while(temp1!=nullptr && temp2!=nullptr){
-            if(temp1->data <= temp2->data){
-                temp->next = temp1;
-                temp1 = temp1->next;
-            }
-            else{
-                temp->next = temp2;
-                temp2 = temp2->next;
-            }
-            
-            temp = temp->next;
+        while (list1 != nullptr && list2 != nullptr) {
+
+        if (list1->data <= list2->data) {
+            temp->next = list1;
+            list1 = list1->next;
+        }
+        else {
+            temp->next = list2;
+            list2 = list2->next;
         }
 
-       if(temp1!=nullptr)
-       temp->next = temp1;
-       else
-       temp->next = temp2;
+        temp = temp->next;
+    }
 
-        Node* newHead = head->next;
-        delete head;
+       if(list1!=nullptr)
+       temp->next = list1;
+       else
+       temp->next = list2;
+
+        Node* newHead = dummy->next;
+        delete dummy;
         return newHead;
     }
 
